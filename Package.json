@@ -1,12 +1,15 @@
 {
-"name": "torn-control-center",
-"version": "1.0.0",
-"main": "server.js",
-"scripts": {
-"start": "node server.js"
-},
-"dependencies": {
-"express": "^4.18.2",
-"node-fetch": "^2.6.7"
-}
+  "name": "torn-control-center",
+  "version": "1.0.0",
+  "main": "server.js",
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^2.6.7"
+  }
 }

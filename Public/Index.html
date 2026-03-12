@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>BDC Control Center</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+padding:40px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+}
+
+.warning{
+color:orange;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Black Diamond Cartel Dashboard</h1>
+
+<div class="card">
+
+<h2>OC Activity</h2>
+
+<ul id="list"></ul>
+
+</div>
+
+<script>
+
+async function load(){
+
+const res = await fetch("/api/oc")
+const data = await res.json()
+
+const list = document.getElementById("list")
+list.innerHTML=""
+
+const now = Date.now()/1000
+
+Object.values(data).forEach(m=>{
+
+const hours = ((now-m.time)/3600).toFixed(1)
+
+const li=document.createElement("li")
+
+if(hours>24){
+li.innerHTML=`<span class="warning">${m.name} - ${hours}h</span>`
+}else{
+li.innerHTML=`${m.name} - ${hours}h`
+}
+
+list.appendChild(li)
+
+})
+
+}
+
+load()
+
+setInterval(load,60000)
+
+</script>
+
+</body>
+</html>
